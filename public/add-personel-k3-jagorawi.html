@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Personel K3 Jagorawi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f4f9ff; /* Background biru yang lembut */
+            color: #000080; /* Warna teks biru tua */
+        }
+
+        h2 {
+            color: #ffcc00; /* Warna kuning untuk heading */
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-color: #000080; /* Warna biru tua untuk border input */
+        }
+
+        label {
+            color: #000080; /* Warna biru tua untuk label */
+        }
+
+        .btn-primary {
+            background-color: #000080; /* Warna biru tua untuk tombol */
+            border-color: #000080;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcc00; /* Warna kuning saat hover */
+            border-color: #ffcc00;
+            color: #000080; /* Teks biru saat hover */
+        }
+
+        .container {
+            background-color: #ffffff; /* Latar belakang putih untuk form */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Tambah Personel K3 Jagorawi</h2>
+        <form id="personelK3Form">
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Personel" required>
+            </div>
+            <div class="form-group">
+                <label for="role_personel_k3">Role</label>
+                <input type="text" class="form-control" id="role_personel_k3" placeholder="Masukkan Role Personel" required>
+            </div>
+            <div class="form-group">
+                <label for="batas_masa_berlaku">Batas Masa Berlaku</label>
+                <input type="date" class="form-control" id="batas_masa_berlaku" required>
+            </div>
+            <button id="submit" type="submit" class="btn btn-primary btn-block">Tambah Personel</button>
+        </form>
+
+        <div id="message" class="mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        document.getElementById('personelK3Form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form secara default
+
+            // Ambil data dari form
+            const nama = document.getElementById('nama').value;
+            const role_personel_k3 = document.getElementById('role_personel_k3').value;
+            const batas_masa_berlaku = document.getElementById('batas_masa_berlaku').value;
+
+            // Kirim data menggunakan Axios
+            axios.post('/addpersoneljagorawi', {
+                nama: nama,
+                role_personel_k3: role_personel_k3,
+                batas_masa_berlaku: batas_masa_berlaku
+            })
+            .then(response => {
+                console.log(response.data); // Debugging response dari server
+                if (response.data.message === "Success") {
+                    window.location.href = 'http://localhost:3000/rekap-data-jagorawi.html'; // Redirect jika sukses
+                } else {
+                    alert('Data submission failed.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    </script>
+</body>
+</html>

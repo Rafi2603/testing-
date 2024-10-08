@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Personel K3 Jagorawi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f4f9ff; /* Background biru yang lembut */
+            color: #000080; /* Warna teks biru tua */
+        }
+
+        h2 {
+            color: #ffcc00; /* Warna kuning untuk heading */
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-color: #000080; /* Warna biru tua untuk border input */
+        }
+
+        label {
+            color: #000080; /* Warna biru tua untuk label */
+        }
+
+        .btn-primary {
+            background-color: #000080; /* Warna biru tua untuk tombol */
+            border-color: #000080;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcc00; /* Warna kuning saat hover */
+            border-color: #ffcc00;
+            color: #000080; /* Teks biru saat hover */
+        }
+
+        .container {
+            background-color: #ffffff; /* Latar belakang putih untuk form */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Tambah Data Checklist K3 Jagorawi</h2>
+        <form id="checklistK3Form">
+
+            <div class="form-group">
+                <label for="section" class="form-label">Section</label>
+                <select class="form-control" id="section" name="section" required>
+                    <option value="" disabled selected>Pilih Section</option>
+                    <option value="A">(A) Perlengkapan Keadaan Darurat</option>
+                    <option value="B">(B) Operasional</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="indikator_k3">Indikator K3:</label>
+                <input type="text" class="form-control" id="indikator_k3" required>
+            </div>
+            <div class="form-group">
+                <label for="jumlah_item">Jumlah Item:</label>
+                <input type="number" class="form-control" id="jumlah_item" required>
+            </div>
+            <div class="form-group">
+                <label for="expired_date">Expired Date (URL Foto):</label>
+                <input type="text" class="form-control" id="expired_date">
+            </div>
+            <div class="form-group">
+                <label for="check_list_Pemeriksaan">Checklist Pemeriksaan (URL Foto):</label>
+                <input type="text" class="form-control" id="check_list_Pemeriksaan">
+            </div>
+            <div class="form-group">
+                <label for="rambu_apar">Rambu APAR (URL Foto):</label>
+                <input type="text" class="form-control" id="rambu_apar">
+            </div>
+            <div class="form-group">
+                <label for="kelengkapan_box_hydrant">Kelengkapan Box Hydrant (URL Foto):</label>
+                <input type="text" class="form-control" id="kelengkapan_box_hydrant">
+            </div>
+            <div class="form-group">
+                <label for="ruang_laktasi">Ruang Laktasi (URL Foto):</label>
+                <input type="text" class="form-control" id="ruang_laktasi">
+            </div>
+            <div class="form-group">
+                <label for="ruang_p3k">Ruang P3K (URL Foto):</label>
+                <input type="text" class="form-control" id="ruang_p3k">
+            </div>
+            <div class="form-group">
+                <label for="organik">Organik (URL Foto):</label>
+                <input type="text" class="form-control" id="organik">
+            </div>
+            <div class="form-group">
+                <label for="non_organik">Non Organik (URL Foto):</label>
+                <input type="text" class="form-control" id="non_organik">
+            </div>
+            <div class="form-group">
+                <label for="limbah_b3">Limbah B3 (URL Foto):</label>
+                <input type="text" class="form-control" id="limbah_b3">
+            </div>
+            <div class="form-group">
+                <label for="smoking_area">Smoking Area (URL Foto):</label>
+                <input type="text" class="form-control" id="smoking_area">
+            </div>
+            <div class="form-group">
+                <label for="dll">Lain-lain (URL Foto):</label>
+                <input type="text" class="form-control" id="dll">
+            </div>
+
+            <button id="submit" type="submit" class="btn btn-primary btn-block">Tambah Checklist K3</button>
+        </form>
+
+        <div id="message" class="mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        document.getElementById('checklistK3Form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form secara default
+
+            // Ambil data dari form
+            const section = document.getElementById('section').value;
+            const indikator_k3 = document.getElementById('indikator_k3').value;
+            const jumlah_item = document.getElementById('jumlah_item').value;
+            const expired_date = document.getElementById('expired_date').value;
+            const check_list_Pemeriksaan = document.getElementById('check_list_Pemeriksaan').value;
+            const rambu_apar = document.getElementById('rambu_apar').value;
+            const kelengkapan_box_hydrant = document.getElementById('kelengkapan_box_hydrant').value;
+            const ruang_laktasi = document.getElementById('ruang_laktasi').value;
+            const ruang_p3k = document.getElementById('ruang_p3k').value;
+            const organik = document.getElementById('organik').value;
+            const non_organik = document.getElementById('non_organik').value;
+            const limbah_b3 = document.getElementById('limbah_b3').value;
+            const smoking_area = document.getElementById('smoking_area').value;
+            const dll = document.getElementById('dll').value;
+
+            // Kirim data menggunakan Axios
+            axios.post('/addchecklistjagorawi', {
+                section: section,
+                indikator_k3: indikator_k3,
+                jumlah_item: jumlah_item,
+                expired_date: expired_date,
+                check_list_Pemeriksaan: check_list_Pemeriksaan,
+                rambu_apar: rambu_apar,
+                kelengkapan_box_hydrant: kelengkapan_box_hydrant,
+                ruang_laktasi: ruang_laktasi,
+                ruang_p3k: ruang_p3k,
+                organik: organik,
+                non_organik: non_organik,
+                limbah_b3: limbah_b3,
+                smoking_area: smoking_area,
+                dll: dll
+            })
+            .then(response => {
+                console.log(response.data); // Debugging response dari server
+                if (response.data.message === "Success") {
+                    window.location.href = 'http://localhost:3000/rekap-data-jagorawi.html'; // Redirect jika sukses
+                } else {
+                    alert('Data submission failed.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    </script>
+</body>
+</html>

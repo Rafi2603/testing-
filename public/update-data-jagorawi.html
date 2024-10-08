@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Rekap Data K3</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f4f9ff; /* Background biru yang lembut */
+            color: #000080; /* Warna teks biru tua */
+        }
+
+        h2 {
+            color: #ffcc00; /* Warna kuning untuk heading */
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-color: #000080; /* Warna biru tua untuk border input */
+        }
+
+        label {
+            color: #000080; /* Warna biru tua untuk label */
+        }
+
+        .btn-primary {
+            background-color: #000080; /* Warna biru tua untuk tombol */
+            border-color: #000080;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcc00; /* Warna kuning saat hover */
+            border-color: #ffcc00;
+            color: #000080; /* Teks biru saat hover */
+        }
+
+        .container {
+            background-color: #ffffff; /* Latar belakang putih untuk form */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Update Rekap Data K3 Jagorawi</h2>
+        <form id="updateRekapDataForm" class="mt-4">
+            <!-- Form fields remain the same -->
+            <div class="form-group mb-3">
+                <label for="tahun" class="form-label">Tahun</label>
+                <input type="number" class="form-control" id="tahun" name="tahun" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="bulan" class="form-label">Bulan</label>
+                <select class="form-control" id="bulan" name="bulan" required>
+                    <option value="" disabled selected>Pilih Bulan</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_karyawan_ops" class="form-label">Jumlah Karyawan OPS</label>
+                    <input type="number" class="form-control" id="jumlah_karyawan_ops" name="jumlah_karyawan_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_karyawan_non_ops" class="form-label">Jumlah Karyawan Non-OPS</label>
+                    <input type="number" class="form-control" id="jumlah_karyawan_non_ops" name="jumlah_karyawan_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_hari_kerja_ops" class="form-label">Jumlah Hari Kerja OPS</label>
+                    <input type="number" class="form-control" id="jumlah_hari_kerja_ops" name="jumlah_hari_kerja_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_hari_kerja_non_ops" class="form-label">Jumlah Hari Kerja Non-OPS</label>
+                    <input type="number" class="form-control" id="jumlah_hari_kerja_non_ops" name="jumlah_hari_kerja_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="form-group mb-3">
+                <label for="jumlah_jam_kerja" class="form-label">Jumlah Jam Kerja</label>
+                <input type="number" class="form-control" id="jumlah_jam_kerja" name="jumlah_jam_kerja" required>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_berat_ops" class="form-label">Kecelakaan Berat OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_berat_ops" name="kecelakaan_berat_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_berat_non_ops" class="form-label">Kecelakaan Berat Non-OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_berat_non_ops" name="kecelakaan_berat_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_ringan_ops" class="form-label">Kecelakaan Ringan OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_ringan_ops" name="kecelakaan_ringan_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_ringan_non_ops" class="form-label">Kecelakaan Ringan Non-OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_ringan_non_ops" name="kecelakaan_ringan_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_meninggal_ops" class="form-label">Kecelakaan Meninggal OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_meninggal_ops" name="kecelakaan_meninggal_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_meninggal_non_ops" class="form-label">Kecelakaan Meninggal Non-OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_meninggal_non_ops" name="kecelakaan_meninggal_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_near_miss_ops" class="form-label">Kecelakaan Near Miss OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_near_miss_ops" name="kecelakaan_near_miss_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="kecelakaan_near_miss_non_ops" class="form-label">Kecelakaan Near Miss Non-OPS</label>
+                    <input type="number" class="form-control" id="kecelakaan_near_miss_non_ops" name="kecelakaan_near_miss_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="fire_accident" class="form-label">Fire Accident</label>
+                    <input type="number" class="form-control" id="fire_accident" name="fire_accident" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="damaged_property" class="form-label">Damaged Property</label>
+                    <input type="number" class="form-control" id="damaged_property" name="damaged_property" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_hari_hilang_ops" class="form-label">Jumlah Hari Hilang OPS</label>
+                    <input type="number" class="form-control" id="jumlah_hari_hilang_ops" name="jumlah_hari_hilang_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_hari_hilang_non_ops" class="form-label">Jumlah Hari Hilang Non-OPS</label>
+                    <input type="number" class="form-control" id="jumlah_hari_hilang_non_ops" name="jumlah_hari_hilang_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_hari_tanpa_hilang_ops" class="form-label">Jumlah Hari Tanpa Hilang OPS</label>
+                    <input type="number" class="form-control" id="jumlah_hari_tanpa_hilang_ops" name="jumlah_hari_tanpa_hilang_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="jumlah_hari_tanpa_hilang_non_ops" class="form-label">Jumlah Hari Tanpa Hilang Non-OPS</label>
+                    <input type="number" class="form-control" id="jumlah_hari_tanpa_hilang_non_ops" name="jumlah_hari_tanpa_hilang_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="lti_ops" class="form-label">LTI OPS</label>
+                    <input type="number" class="form-control" id="lti_ops" name="lti_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="lti_non_ops" class="form-label">LTI Non-OPS</label>
+                    <input type="number" class="form-control" id="lti_non_ops" name="lti_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="man_hour_ops" class="form-label">Man Hour OPS</label>
+                    <input type="number" class="form-control" id="man_hour_ops" name="man_hour_ops" required>
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                    <label for="man_hour_non_ops" class="form-label">Man Hour Non-OPS</label>
+                    <input type="number" class="form-control" id="man_hour_non_ops" name="man_hour_non_ops" required>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </div>
+            </div>
+
+        <div id="message" class="mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        document.getElementById('updateRekapDataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+        // Mengambil nilai form
+        const data = {
+            tahun: document.getElementById('tahun').value,
+            bulan: document.getElementById('bulan').value,
+            jumlah_karyawan_ops: Number(document.getElementById('jumlah_karyawan_ops').value),
+            jumlah_karyawan_non_ops: Number(document.getElementById('jumlah_karyawan_non_ops').value),
+            jumlah_hari_kerja_ops: Number(document.getElementById('jumlah_hari_kerja_ops').value),
+            jumlah_hari_kerja_non_ops: Number(document.getElementById('jumlah_hari_kerja_non_ops').value),
+            jumlah_jam_kerja: Number(document.getElementById('jumlah_jam_kerja').value),
+            kecelakaan_berat_ops: Number(document.getElementById('kecelakaan_berat_ops').value),
+            kecelakaan_berat_non_ops: Number(document.getElementById('kecelakaan_berat_non_ops').value),
+            kecelakaan_ringan_ops: Number(document.getElementById('kecelakaan_ringan_ops').value),
+            kecelakaan_ringan_non_ops: Number(document.getElementById('kecelakaan_ringan_non_ops').value),
+            kecelakaan_meninggal_ops: Number(document.getElementById('kecelakaan_meninggal_ops').value),
+            kecelakaan_meninggal_non_ops: Number(document.getElementById('kecelakaan_meninggal_non_ops').value),
+    kecelakaan_near_miss_ops: Number(document.getElementById('kecelakaan_near_miss_ops').value),
+    kecelakaan_near_miss_non_ops: Number(document.getElementById('kecelakaan_near_miss_non_ops').value),
+    fire_accident: Number(document.getElementById('fire_accident').value),
+    damaged_property: Number(document.getElementById('damaged_property').value),
+    jumlah_hari_hilang_ops: Number(document.getElementById('jumlah_hari_hilang_ops').value),
+    jumlah_hari_hilang_non_ops: Number(document.getElementById('jumlah_hari_hilang_non_ops').value),
+    jumlah_hari_tanpa_hilang_ops: Number(document.getElementById('jumlah_hari_tanpa_hilang_ops').value),
+    jumlah_hari_tanpa_hilang_non_ops: Number(document.getElementById('jumlah_hari_tanpa_hilang_non_ops').value),
+    lti_ops: Number(document.getElementById('lti_ops').value),
+    lti_non_ops: Number(document.getElementById('lti_non_ops').value),
+    man_hour_ops: Number(document.getElementById('man_hour_ops').value),
+    man_hour_non_ops: Number(document.getElementById('man_hour_non_ops').value)
+        };
+
+            axios.put(`/updaterekapdatajagorawi`, data)
+                .then(response => {
+                    if (response.data.message === 'Update Success') {
+                        alert('Data updated successfully!');
+                        window.location.href = 'http://localhost:3000/rekap-data-jagorawi.html'; // Redirect on success
+                    } else {
+                        alert('Update failed.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred during the update.');
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+//Login Page
+router.post('/login', async (req, res) => {
+    const { ruas, pass_ruas } = req.body;
+    const query = 'SELECT ruas, pass_ruas, userrole FROM akun_ruas WHERE ruas = $1;';
+    db.query(query, [ruas], (err, results) => {
+      if (err) {
+        return res.status(500).send('Internal Server Error');
+      }
+  
+      if (results.rowCount < 1) {
+        return res.status(401).send('Nama Ruas salah'); // Nama tidak ditemukan
+      }
+  
+      const storedPassword = results.rows[0].pass_ruas;
+      const userRole = results.rows[0].userrole;
+  
+      if (pass_ruas === storedPassword) {
+        if (userRole === 'admin' || userRole === 'user') {
+          req.session.userRole = userRole;
+            return res.status(200).json({
+                message: "Login successful", showItems: results.rows
+            });
+        } else {
+            return res.status(401).send('Hanya user dan admin yang dapat login');
+        }
+      } 
+      return res.status(401).send('Password salah');
+    });
+});

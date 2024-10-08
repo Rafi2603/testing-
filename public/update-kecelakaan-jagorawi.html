@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Kecelakaan Kerja</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Update Kecelakaan Kerja</h2>
+        <form id="updateKecelakaanForm">
+            <div class="form-group">
+                <label for="personel_k3_id">Nomor Kecelakaan</label>
+                <input type="number" class="form-control" id="kecelakaan_kerja_id" placeholder="Masukkan ID Personel" required>
+            </div>
+            <div class="form-group">
+                <label for="Tanggal">Tanggal</label>
+                <input type="date" class="form-control" id="Tanggal" required>
+            </div>
+            <div class="form-group">
+                <label for="NIK">NIK</label>
+                <input type="text" class="form-control" id="NIK" required>
+            </div>
+            <div class="form-group">
+                <label for="Nama">Nama</label>
+                <input type="text" class="form-control" id="Nama" required>
+            </div>
+            <div class="form-group">
+                <label for="Jabatan">Jabatan</label>
+                <input type="text" class="form-control" id="Jabatan" required>
+            </div>
+            <div class="form-group">
+                <label for="Ruas">Ruas</label>
+                <input type="text" class="form-control" id="Ruas" required>
+            </div>
+            <div class="form-group">
+                <label for="Kronologis">Kronologis</label>
+                <textarea class="form-control" id="Kronologis" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="Kategori_Kecelakaan" name="Kategori_Kecelakaan" required>
+                    <option value="" disabled selected>Pilih Kategori</option>
+                    <option value="Ringan">Ringan</option>
+                    <option value="Berat">Berat</option>
+                    <option value="Fatal">Fatal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Tindak_Lanjut">Tindak Lanjut</label>
+                <textarea class="form-control" id="Tindak_Lanjut" rows="2" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Perawatan_di_RS">Perawatan di RS</label>
+                <input type="date" class="form-control" id="Perawatan_di_RS" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Kecelakaan</button>
+        </form>
+
+        <div id="message" class="mt-4"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        document.getElementById('updateKecelakaanForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const data = {
+                kecelakaan_kerja_id: document.getElementById('kecelakaan_kerja_id').value,
+                Tanggal: document.getElementById('Tanggal').value,
+                NIK: document.getElementById('NIK').value,
+                Nama: document.getElementById('Nama').value,
+                Jabatan: document.getElementById('Jabatan').value,
+                Ruas: document.getElementById('Ruas').value,
+                Kronologis: document.getElementById('Kronologis').value,
+                Kategori_Kecelakaan: document.getElementById('Kategori_Kecelakaan').value,
+                Tindak_Lanjut: document.getElementById('Tindak_Lanjut').value,
+                Perawatan_di_RS: document.getElementById('Perawatan_di_RS').value
+            };
+
+            axios.put(`/updatekecelakaanjagorawi`, data)
+                .then(response => {
+                    if (response.data.message === 'Update Success') {
+                        alert('Data updated successfully!');
+                        window.location.href = 'http://localhost:3000/rekap-data-jagorawi.html'; // Redirect on success
+                    } else {
+                        alert('Data update failed.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred during the update.');
+                });
+        });
+    </script>
+</body>
+</html>

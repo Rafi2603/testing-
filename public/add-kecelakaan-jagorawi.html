@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data Kecelakaan Jagorawi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f9ff; /* Background biru yang lembut */
+            color: #000080; /* Warna teks biru tua */
+        }
+
+        h2 {
+            color: #ffcc00; /* Warna kuning untuk heading */
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-color: #000080; /* Warna biru tua untuk border input */
+        }
+
+        label {
+            color: #000080; /* Warna biru tua untuk label */
+        }
+
+        .btn-primary {
+            background-color: #000080; /* Warna biru tua untuk tombol */
+            border-color: #000080;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffcc00; /* Warna kuning saat hover */
+            border-color: #ffcc00;
+            color: #000080; /* Teks biru saat hover */
+        }
+
+        .container {
+            background-color: #ffffff; /* Latar belakang putih untuk form */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Tambah Data Kecelakaan Jagorawi</h2>
+        <form id="addAccidentForm" class="mt-4">
+            <div class="mb-3">
+                <label for="Tanggal" class="form-label">Tanggal</label>
+                <input type="date" class="form-control" id="Tanggal" name="Tanggal" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="NIK" class="form-label">NIK</label>
+                    <input type="text" class="form-control" id="NIK" name="NIK" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="Nama" name="Nama" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="Jabatan" class="form-label">Jabatan</label>
+                    <input type="text" class="form-control" id="Jabatan" name="Jabatan" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Ruas" class="form-label">Ruas</label>
+                    <select class="form-control" id="Ruas" name="Ruas" required>
+                        <option value="Jagorawi">Jagorawi</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="Kronologis" class="form-label">Kronologis Kecelakaan</label>
+                <textarea class="form-control" id="Kronologis" name="Kronologis" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="Kategori_Kecelakaan" class="form-label">Kategori Kecelakaan</label>
+                <select class="form-control" id="Kategori_Kecelakaan" name="Kategori_Kecelakaan" required>
+                    <option value="" disabled selected>Pilih Kategori</option>
+                    <option value="Ringan">Ringan</option>
+                    <option value="Berat">Berat</option>
+                    <option value="Fatal">Fatal</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="Tindak_Lanjut" class="form-label">Tindak Lanjut</label>
+                <textarea class="form-control" id="Tindak_Lanjut" name="Tindak_Lanjut" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="Perawatan_di_RS" class="form-label">Tanggal Perawatan di RS</label>
+                <input type="date" class="form-control" id="Perawatan_di_RS" name="Perawatan_di_RS" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Event listener untuk submit form
+        document.getElementById('addAccidentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form secara default
+
+            // Ambil data dari form
+            const formData = new FormData(this);
+
+            // Konversi FormData ke JSON
+            const formJSON = {};
+            formData.forEach((value, key) => formJSON[key] = value);
+
+            // Kirim data menggunakan Axios
+            axios.post('/addkecelakaanjagorawi', formJSON)
+                .then(response => {
+                    console.log(response.data); // Debugging response dari server
+                    if (response.data.message === "Success") {
+                        window.location.href = 'http://localhost:3000/rekap-data-jagorawi.html'; // Redirect jika sukses
+                    } else {
+                        alert('Data submission failed.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred.');
+                });
+
+
+        });
+    </script>
+</body>
+</html>

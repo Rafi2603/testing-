@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Data K3</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rekap Data K3 CIPULARANG</h1>
+         <!-- Button to navigate to Add Data Page -->
+         <div class="mb-4">
+            <a href="/add-data.html" class="btn btn-primary">Tambah Data Baru</a>
+        </div>
+        <table id="data-table" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Bulan</th>
+                    <th>Jumlah Karyawan OPS</th>
+                    <th>Jumlah Karyawan Non-OPS</th>
+                    <th>Jumlah Hari Kerja OPS</th>
+                    <th>Jumlah Hari Kerja Non-OPS</th>
+                    <th>Jumlah Jam Kerja</th>
+                    <th>Kecelakaan Berat OPS</th>
+                    <th>Kecelakaan Berat Non-OPS</th>
+                    <th>Kecelakaan Ringan OPS</th>
+                    <th>Kecelakaan Ringan Non-OPS</th>
+                    <th>Kecelakaan Meninggal OPS</th>
+                    <th>Kecelakaan Meninggal Non-OPS</th>
+                    <th>Kecelakaan Near Miss OPS</th>
+                    <th>Kecelakaan Near Miss Non-OPS</th>
+                    <th>Fire Accident OPS</th>
+                    <th>Fire Accident Non-OPS</th>
+                    <th>Damaged Property OPS</th>
+                    <th>Damaged Property Non-OPS</th>
+                    <th>Jumlah Hari Hilang OPS</th>
+                    <th>Jumlah Hari Hilang Non-OPS</th>
+                    <th>Jumlah Hari Tanpa Hilang OPS</th>
+                    <th>Jumlah Hari Tanpa Hilang Non-OPS</th>
+                    <th>LTI OPS</th>
+                    <th>LTI Non-OPS</th>
+                    <th>Man Hour OPS</th>
+                    <th>Man Hour Non-OPS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data tabel akan diisi oleh script.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Your custom script -->
+    <script src="script-cipularang.js"></script>
+</body>
+</html>
