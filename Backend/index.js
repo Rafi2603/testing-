@@ -8,7 +8,19 @@ const db = require('./configs/db.configs.js');
 const path = require('path');
 
 // Middleware (session)
+const cors = require('cors');
+app.use(cors({
+  origin: 'https://jmto-k3-dashboard2-5lwf37x4g-rafi2603s-projects.vercel.app', // Allow this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed methods
+  credentials: true // Allow credentials if needed
+}));
 
+// CORS configuration
+const corsOptions = {
+    origin: 'https://jmto-k3-dashboard2-5lwf37x4g-rafi2603s-projects.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Include credentials in the request
+  };
 
 app.use(
     session({
