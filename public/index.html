@@ -110,7 +110,7 @@
             const password = document.getElementById('password').value;
     
             try {
-                const response = await axios.post('/login', {
+                const response = await axios.post('https://jmto-k3-dashboard.vercel.app/login', {
                     ruas: username,
                     pass_ruas: password
                 });
@@ -120,9 +120,9 @@
     
                 // Redirect based on role and ruas
                 if (data.showItems[0].ruas == 'Cipularang') {
-                    window.location.href = '/rekap-data-cipularang.html'; // Update dengan URL admin page
+                    window.location.href = 'https://jmto-k3-dashboard.vercel.app/rekap-data-cipularang.html'; // Update dengan URL admin page
                 } else if (data.showItems[0].ruas == 'Jagorawi') {
-                    window.location.href = '/rekap-data-jagorawi.html'; // Update dengan URL user page
+                    window.location.href = 'https://jmto-k3-dashboard.vercel.app/rekap-data-jagorawi.html'; // Update dengan URL user page
                 }
             } catch (error) {
                 // Handle error response dari server
