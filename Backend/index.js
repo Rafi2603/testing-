@@ -10,7 +10,7 @@ const cors = require('cors');
 // Middleware (session)
 
 app.use(cors({
-    origin: 'https://jmto-k3-dashboard.vercel.app' // or '*' for all origins
+    origin: 'https://jmto-k3-dashboard2.vercel.app' // or '*' for all origins
 }));
 
 app.use(
